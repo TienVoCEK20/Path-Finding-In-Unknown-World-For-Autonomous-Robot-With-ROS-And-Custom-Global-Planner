@@ -13,6 +13,7 @@ roscore
 
 Terminal 2:
 ssh ubuntu@{ip_address_of_remote_robot}
+
 roslaunch turtlebot3_bringup turtlebot3_bringup.launch
 
 Terminal 3:
