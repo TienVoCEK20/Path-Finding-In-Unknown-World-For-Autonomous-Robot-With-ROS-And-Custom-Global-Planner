@@ -10,10 +10,13 @@ I am also implementing algorithm for global_planner. Will update later!!
 
 Terminal 1:
 roscore
+
 Terminal 2:
 ssh ubuntu@{ip_address_of_remote_robot}
 roslaunch turtlebot3_bringup turtlebot3_bringup.launch
+
 Terminal 3:
 roslaunch cse_global_planner bringup.launch
+
 Terminal 4:
 rosrun cse_global_planner test.py
