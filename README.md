@@ -8,6 +8,12 @@
 
 I am also implementing algorithm for global_planner. Will update later!!
 
-Open terminal:
-Access turtlbot3 via ssh:
-![image](https://user-images.githubusercontent.com/83823978/123520461-041b1e00-d6db-11eb-9b46-95ef2538b4e7.png)
+Terminal 1:
+roscore
+Terminal 2:
+ssh ubuntu@{ip_address_of_remote_robot}
+roslaunch turtlebot3_bringup turtlebot3_bringup.launch
+Terminal 3:
+roslaunch cse_global_planner bringup.launch
+Terminal 4:
+rosrun cse_global_planner test.py
