@@ -28,11 +28,11 @@ from Robot_control_panel import *
 config = Config()
 
 
-def planner(robot_type=RobotType.circle,n):
+def planner(first_start,first_goal,n):
     print(__file__ + " start!!")
 
     # set configuration of robot
-    config.robot_type = robot_type
+    config.robot_type = RobotType.circle
     robotvision = config.robot_vision
     
     # set same window size to capture pictures
@@ -40,12 +40,13 @@ def planner(robot_type=RobotType.circle,n):
     plt.figure(figsize=(7,7))
     
     # get user input
+    menu_result = menu()
     runtimes = n
     mapname = menu_result.m
     worldname = menu_result.w
 
-    start = np.array([menu_result.sx,menu_result.sy])
-    goal = np.array([menu_result.gx,menu_result.gy])
+    start = first_start
+    goal = first_goal
     
     # current position of robot
     cpos = start
@@ -281,9 +282,10 @@ if __name__ == '__main__':
 
             #number of executing finding path
             n = 1
+            #convert the coordianates' start position of robot and goal in real world to simulation  
             start = np.array([cposx,cposy])
             goal = np.array([goalx,goaly])
-            dx,dy = planner(robot_type=RobotType.circle,*goal,*start,*n)
+            dx,dy = planner(goal,start,n)
             #update the next point to the robot in real world
             next_pointx = cposx + dx/20 #x=20 in simulation is equivalent to x=1 in real world 
             next_pointy = cposy + dy/20 #y=20 in simulation is equivalent to x=1 in real world 
