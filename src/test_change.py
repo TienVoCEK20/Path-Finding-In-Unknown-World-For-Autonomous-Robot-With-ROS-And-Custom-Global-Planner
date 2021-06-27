@@ -282,22 +282,29 @@ if __name__ == '__main__':
 
             #number of executing finding path
             n = 1
+                
             #convert the coordianates' start position of robot and goal in real world to simulation
-            Sx = Rx + #Position in real world 
-            Sy = Ry + #Position in 
+            menu_result = menu()
+            x = menu_result.sx
+            y = menu_result.sy
+            
+            Sx = Rx + x #Position of Robot in simulation 
+            Sy = Ry + y # 
             rate = 20 #the scale of real world compared to simulation. Ex: x = 1 in real world is equivalent to x = 20 in simulation 
-            goalSx = Sx + (goalx - Rx)*rate # Coordinates of goal in real world
-            goalSy = Sy + (goaly - Rx)*rate #
-            start = np.array([cposx,cposy])
+            goalSx = Sx + (goalx - Rx)*rate # Coordinates of goal in simulation 
+            goalSy = Sy + (goaly - Rx)*rate # Coordinates of goal in simulation
+
+            start = np.array([Sx,Sy])
             goal = np.array([goalSx,goalSy])
+
             dx,dy = planner(goal,start,n)
             #update the next point to the robot in real world
-            next_pointx = cposx + dx/20 #x=20 in simulation is equivalent to x=1 in real world 
-            next_pointy = cposy + dy/20 #y=20 in simulation is equivalent to x=1 in real world 
+            next_point_Rx = Rx + dx/20 #x=20 in simulation is equivalent to x=1 in real world 
+            next_point_Ry = Ry + dy/20 #y=20 in simulation is equivalent to x=1 in real world 
 
             #robot moves to the next point
             navigator = GoToPose()
-            position = {'x': next_pointx, 'y': next_pointy}
+            position = {'x': next_point_Rx, 'y': next_point_Ry}
             quaternion = {'r1': 0.000, 'r2': 0.000, 'r3': 0.000, 'r4': 1.000}    
             rospy.loginfo("Go to (%s, %s) pose", position['x'], position['y'])
 
