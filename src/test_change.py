@@ -275,16 +275,21 @@ if __name__ == '__main__':
         while (cposx != goalx and cposy != goaly):
             
             #update position of the robot
-            cposx = position.msg.pose.pose.position.x
-            cposy = position.msg.pose.pose.position.y
+            Rx = position.msg.pose.pose.position.x #Rx: real world position
+            Ry = position.msg.pose.pose.position.y #Ry: real world position
             #save map for planning 
             os.system('rosrun map_server map_saver -f /home/tien/robot/cse_global_planner/src/map.pgm')
 
             #number of executing finding path
             n = 1
-            #convert the coordianates' start position of robot and goal in real world to simulation  
+            #convert the coordianates' start position of robot and goal in real world to simulation
+            Sx = Rx + #Position in real world 
+            Sy = Ry + #Position in 
+            rate = 20 #the scale of real world compared to simulation. Ex: x = 1 in real world is equivalent to x = 20 in simulation 
+            goalSx = Sx + (goalx - Rx)*rate # Coordinates of goal in real world
+            goalSy = Sy + (goaly - Rx)*rate #
             start = np.array([cposx,cposy])
-            goal = np.array([goalx,goaly])
+            goal = np.array([goalSx,goalSy])
             dx,dy = planner(goal,start,n)
             #update the next point to the robot in real world
             next_pointx = cposx + dx/20 #x=20 in simulation is equivalent to x=1 in real world 
@@ -300,6 +305,7 @@ if __name__ == '__main__':
             success = navigator.goto(position, quaternion)
             if (success):
                 rospy.loginfo("reach node")
+                #increment the finding path numbers
                 n+=1
             else:
                 rospy.loginfo("failed to reach node")
