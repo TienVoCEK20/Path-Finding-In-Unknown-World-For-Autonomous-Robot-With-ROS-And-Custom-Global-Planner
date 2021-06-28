@@ -29,13 +29,16 @@ def main(gx=10.0, gy=10.0, robot_type=RobotType.circle):
     robotvision = config.robot_vision
     
     # set same window size to capture pictures
-    plt.figure(figsize=(7,7))
+    #plt.figure(figsize=(8,8))
+    #plt.figure(figsize=(7,7))
+    #plt.figure(figsize=(5,5))
     
     # get user input
     menu_result = menu()
     runtimes = menu_result.n
     mapname = menu_result.m
     worldname = menu_result.w
+
     start = np.array([menu_result.sx,menu_result.sy])
     goal = np.array([menu_result.gx,menu_result.gy])
     
@@ -89,7 +92,7 @@ def main(gx=10.0, gy=10.0, robot_type=RobotType.circle):
             if len(open_sights) > 0:
                 open_sights = np.array(open_sights)
                 open_local_pts = open_sights[:, 2]    # open_local_pts
-                print ("open_local_pts,", open_local_pts)
+                #print ("open_local_pts,", open_local_pts)
                 for i in range( len(open_local_pts)):
                     open_local_pts[i][0] = approximately_num(open_local_pts[i][0])
                     open_local_pts[i][1] = approximately_num(open_local_pts[i][1])
@@ -107,7 +110,7 @@ def main(gx=10.0, gy=10.0, robot_type=RobotType.circle):
                 else:
                     open_local_pts_status = [inside_global_true_sight(pt, robotvision, traversal_sight) for pt in open_local_pts]
                     ao_local_pts = open_local_pts[np.logical_not(open_local_pts_status)]
-                    print ("ao_local_pts,", ao_local_pts)
+                    #print ("ao_local_pts,", ao_local_pts)
                     if len(ao_local_pts) > 0:
                         ranks_new = np.array([ranking(center, pt, goal) for pt in ao_local_pts])
                         # active open points at local
@@ -142,8 +145,8 @@ def main(gx=10.0, gy=10.0, robot_type=RobotType.circle):
             
         # record the path
         traversal_sight.append([center, closed_sights, open_sights])
-        if print_traversal_sight:
-            print ("traversal_sight:", traversal_sight)
+        #if print_traversal_sight:
+        #    print ("traversal_sight:", traversal_sight)
             
         
         asp, critical_ls = approximately_shortest_path(skeleton_path, traversal_sight, robotvision)
@@ -244,8 +247,5 @@ def main(gx=10.0, gy=10.0, robot_type=RobotType.circle):
 
 if __name__ == '__main__':
     main(robot_type=RobotType.rectangle)
-    dx = main.next_point[0]
-    dy = main.next_point[1]
-    print("dx: %f,dy: %f" %(dx,dy))
 
     #main(robot_type=RobotType.circle)
