@@ -5,6 +5,8 @@ from enum import Enum
 '''
 CONTROL SIGNALs FOR SHOWING OR HIDING PLOT EMELENTS
 '''
+
+
 show_animation = True
 show_map = True
 show_world = False
@@ -34,10 +36,44 @@ show_start = True
 show_text_goal = True
 
 
+'''
+CONTROL SIGNALs FOR SHOWING OR HIDING PLOT EMELENTS
+'''
 
+'''
+show_animation = False
+show_map = False
+show_world = False
+
+show_traversal_sight = False
+
+show_open_sight = False
+show_closed_sight = False
+show_circle_range = False
+
+show_ref_sight = False
+
+show_sketelon_path = False
+show_approximately_shortest_path = False
+show_critical_line_segments = False
+show_cls_orderednumber = False  # show ordered number of critical line segments
+
+show_visited_path = False
+show_visible_graph = False
+
+show_active_openpt = False
+show_next_point = False
+
+show_robot = False
+show_goal = False
+show_start = False
+show_text_goal = False
+'''
 
 '''
 PRINT OUT FOR DEBUG
+'''
+
 '''
 print_boundary_linesegments = True
 print_closed_sights = True
@@ -47,6 +83,17 @@ print_ref_sight = False
 print_ref_csight_linesegments = False
 print_csight_linesegments = False
 print_traversal_sight = False
+'''
+
+print_boundary_linesegments = False
+print_closed_sights = False
+print_closed_linesegments = False
+print_open_sights = False
+print_ref_sight = False
+print_ref_csight_linesegments = False
+print_csight_linesegments = False
+print_traversal_sight = False
+
 
 '''
 LINE STYPE FOR DISPLAY PLOT
