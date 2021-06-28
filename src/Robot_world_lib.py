@@ -35,14 +35,14 @@ def read_map_from_world(world_name):
         exit(0)
         
     # Convert image to gray and blur it
-    print ("find contours of world:", world_name)
+    #print ("find contours of world:", world_name)
     src_gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
     src_gray = cv.blur(src_gray, (3,3))
 
     max_thresh = 255
     thresh = 100 # initial threshold
     obstacle = thresh_callback(thresh, src_gray, world_name)
-    print (obstacle)
+    #print (obstacle)
 
 def world_display(plt, mpimg, world_name):
     img = mpimg.imread(world_name)
