@@ -51,7 +51,7 @@ def read_map_csv(mapname):
         if len(ob_part) > 1:
             ob_part.append(ob_part[0])
             obstacles.append(ob_part)
-    print (obstacles)
+    #print (obstacles)
     return obstacles
     
 def read_map_csv_dwa(mapname):
