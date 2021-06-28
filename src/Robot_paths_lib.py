@@ -1,22 +1,4 @@
-import numpy as np
-from sys import float_info
-from Robot_lib import *    
-from collections import defaultdict 
-
-from Robot_draw_lib import *
-
-def motion(current_position, next_pt):
-    '''
-    motion model
-    '''
-    current_position[0] = approximately_num(next_pt[0])
-    current_position[1] = approximately_num(next_pt[1])
-    return current_position
-    
-def ranking_score(angle, distance):
-        
-    # ranking = alpha/(distance**2) + beta/abs(angle**2)
-    alpha = 0.99
+alpha = 0.99
     beta = 0.01
     angle = angle/math.pi
     distance = distance/100
@@ -80,10 +62,10 @@ def get_possible_AH_next_points_from_point(AH_points, obstacle_list, startpoint,
             # Check if selected point is existed in the path
             point = (obstacle_list[0,i], obstacle_list[1,i])
             if point not in AH_points:
-                print ("__Linked ", obstacle_list[:,i])
+                #print ("__Linked ", obstacle_list[:,i])
                 # concatenate path to matrix path
                 AH_points.append((obstacle_list[0,i], obstacle_list[1,i]))
-                print ("__PATH  ", AH_points)
+                #print ("__PATH  ", AH_points)
                 #plt.plot((startpoint[0],obstacle_list[0][i]), (startpoint[1], obstacle_list[1][i]), "--r")
                 #plt.plot(obstacle_list[0][i], obstacle_list[1][i], "or")
                 possible_AH_next_points.append(obstacle_list[:,i])
@@ -100,7 +82,7 @@ def get_possible_AH_next_points_from_point(AH_points, obstacle_list, startpoint,
                 
 def find_AH_paths(ox_b, oy_b, startpoint, goal):
     obstacle_list = np.array([ox_b, oy_b])
-    print (obstacle_list)
+    #print (obstacle_list)
     AH_paths = []
     AH_points = []
     AH_points.append(startpoint)
@@ -141,7 +123,7 @@ def graph_insert(graph, pnode, leafs):
 # Function to find the shortest 
 # path between two nodes of a graph 
 def BFS_skeleton_path(graph, start, goal): 
-    print ("Current {0}, Next {1}".format(start, goal))
+    #print ("Current {0}, Next {1}".format(start, goal))
     #print ("graph", graph)
     explored = []
       
@@ -190,7 +172,7 @@ def approximately_shortest_path(skeleton_path, traversal_sight, robotvision):
     if len(skeleton_path) <= 2:
         return skeleton_path, []
     else:
-        print ("skeleton_path:", skeleton_path)
+        #print ("skeleton_path:", skeleton_path)
         spt = skeleton_path[0]
         gpt = skeleton_path[-1]
         critical_ls = get_critical_ls(skeleton_path, traversal_sight, robotvision)
@@ -267,7 +249,7 @@ def get_critical_ls(skeleton_path, traversal_sight, robotvision):
             local_ls.append([0, midpt, c_pt])
 
         critical_ls.extend(local_ls)
-        print ("critical_ls", critical_ls)
+        #print ("critical_ls", critical_ls)
     return critical_ls
 
 def approximately_sp_ls_B(critical_ls, spt, gpt):
@@ -337,3 +319,4 @@ def approximately_sp_ls(critical_ls, spt, gpt):
                     else:
                         path[i] = critical_ls[i-1][1]
     return  path
+
