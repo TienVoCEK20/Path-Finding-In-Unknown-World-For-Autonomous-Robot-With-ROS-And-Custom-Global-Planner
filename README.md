@@ -20,3 +20,5 @@ roslaunch turtlebot3_bringup turtlebot3_bringup.launch
 
 Terminal 3:
 roslaunch cse_global_planner cse-global-planner.launch
+
+Will update video of robot in real world later!!!
