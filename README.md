@@ -17,7 +17,4 @@ ssh ubuntu@{ip_address_of_remote_robot}
 roslaunch turtlebot3_bringup turtlebot3_bringup.launch
 
 Terminal 3:
-roslaunch cse_global_planner bringup.launch
-
-Terminal 4:
-rosrun cse_global_planner test.py
+roslaunch cse_global_planner cse-global-planner.launch
