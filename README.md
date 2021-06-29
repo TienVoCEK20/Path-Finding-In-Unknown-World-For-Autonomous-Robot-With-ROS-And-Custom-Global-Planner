@@ -2,11 +2,9 @@
 
 ![](robot.jpg)
 
-[Test SLAM video](https://drive.google.com/file/d/1RyLP1ap0MhS0q9NDTvzyzbdhAX0FgNUc/view?usp=sharing)
+#this is a project for doing a research path planning in an unknowing world that I am currently doing with many teachers in HCMUT
 
-[Test Navigation video](https://drive.google.com/file/d/1xu4qLmRwJadYSF25RUl9RiRSYW9SUtGV/view?usp=sharing)
-
-I am also implementing algorithm for global_planner. Will update later!!
+#Path planning in simulation
 
 Terminal 1:
 roscore
