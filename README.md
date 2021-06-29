@@ -1,10 +1,12 @@
 # Autonomous Robot With ROS and Web Interface
 
-##this is a project for doing a research path planning in an unknowing world that I am currently doing with many teachers in HCMUT
+## this is a project that I am currently doing with many teachers in HCMUT. The aim for this project is to implementing path planner for a robot in an unknown map in real world
 
 ![](robot.jpg)
 
 Path planning in simulation
+
+![](simulation.png)
 
 Terminal 1:
 roscore
